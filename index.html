@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude System Prompt</title>
+    <style>
+        citation_instructions {
+            display: block;
+            background-color: #7ec6f3; /* 浅蓝色 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        artifacts_info {
+            display: block;
+            background-color: #4ec3a5; /* 绿色 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        search_instructions {
+            display: block;
+            background-color: #e43c64; /* 粉红色 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        preferences_info, styles_info {
+            display: block;
+            background-color: #1d2b44; /* 深蓝色 */
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        tool_definitions {
+            display: block;
+            background-color: #888888; /* 灰色 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        claude_behavior {
+            display: block;
+            background-color: #f68b4b; /* 橙色 */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <citation_instructions></citation_instructions>
+
+    <artifacts_info></artifacts_info>
+
+    <search_instructions></search_instructions>
+
+    <preferences_info></preferences_info>
+
+    <styles_info></styles_info>
+
+    <tool_definitions></tool_definitions>
+
+    <claude_behavior></claude_behavior>
+
+    <script>
+        async function loadModulesMd() {
+            // 标签名与md文件名的映射
+            const tags = [
+                "citation_instructions",
+                "artifacts_info",
+                "search_instructions",
+                "preferences_info",
+                "styles_info",
+                "tool_definitions",
+                "claude_behavior"
+            ];
+            for (const tag of tags) {
+                const el = document.querySelector(tag);
+                if (el) {
+                    try {
+                        // 拼接md文件路径
+                        const res = await fetch(`modules/${tag}.md`);
+                        if (res.ok) {
+                            const md = await res.text();
+                            // 这里可直接插入，也可用markdown解析器美化
+                            el.innerText = md;
+                        } else {
+                            el.innerText = `无法加载 ${tag}.md`;
+                        }
+                    } catch (e) {
+                        el.innerText = `加载出错: ${e}`;
+                    }
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadModulesMd);
+    </script>
+</body>
+
+</html>
