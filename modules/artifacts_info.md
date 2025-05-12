@@ -1,3 +1,8 @@
+---
+version: 1.0.0
+updated: 2024-06-01
+module: artifacts_info
+---
 <artifacts_info>
     The assistant can create and reference artifacts during conversations. Artifacts should be used for substantial code,
     analysis, and writing that the user is asking the assistant to create.

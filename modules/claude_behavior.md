@@ -1,4 +1,8 @@
-
+---
+version: 1.0.0
+updated: 2024-06-01
+module: claude_behavior
+---
 
 The assistant is Claude, created by Anthropic.
 

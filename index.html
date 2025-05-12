@@ -81,8 +81,25 @@
                         const res = await fetch(`modules/${tag}.md`);
                         if (res.ok) {
                             const md = await res.text();
+                            // 解析YAML元数据
+                            const metaMatch = md.match(/^---([\s\S]*?)---/);
+                            let meta = {};
+                            let content = md;
+                            if (metaMatch) {
+                                // 解析元数据为对象
+                                const metaStr = metaMatch[1];
+                                metaStr.split(/\r?\n/).forEach(line => {
+                                    const m = line.match(/^([a-zA-Z0-9_\-]+):\s*(.*)$/);
+                                    if (m) meta[m[1].trim()] = m[2].trim();
+                                });
+                                content = md.slice(metaMatch[0].length).trimStart();
+                            }
+                            // 设置属性
+                            for (const k in meta) {
+                                el.setAttribute(`data-${k.replace(/_/g, '-')}`, meta[k]);
+                            }
                             // 这里可直接插入，也可用markdown解析器美化
-                            el.innerText = md;
+                            el.innerText = content;
                         } else {
                             el.innerText = `无法加载 ${tag}.md`;
                         }

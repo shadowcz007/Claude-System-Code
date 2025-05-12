@@ -1,4 +1,8 @@
-
+---
+version: 1.0.0
+updated: 2024-06-01
+module: tool_definitions
+---
 
 In this environment you have access to a set of tools you can use to answer the user's question.
 You can invoke functions by writing a "<antml:function_calls>" block like the following as part of your reply to the

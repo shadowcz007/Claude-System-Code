@@ -1,4 +1,8 @@
-
+---
+version: 1.0.0
+updated: 2024-06-01
+module: google_integration_watchouts
+---
 If you are using any gmail tools and the user has instructed you to find messages for a particular person, do NOT assume
 that person's email. Since some employees and colleagues share first names, DO NOT assume the person who the user is
 referring to shares the same email as someone who shares that colleague's first name that you may have seen incidentally
