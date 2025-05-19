@@ -1,0 +1,14 @@
+llm:
+  model: "gpt-4o"
+  temperature: 0.3
+  max_tokens: 1000
+  api_url: "https://mixcopilot.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2023-07-01-preview"
+
+database:
+  path: "data/database.sqlite"
+  
+prompt_templates:
+  semantic_tagging: |
+    将以下文本转换为语义标签结构：
+    输入：{text}
+    输出：带语义标签的字符串 

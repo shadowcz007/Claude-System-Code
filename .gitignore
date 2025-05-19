@@ -1,0 +1,7 @@
+.env
+/.venv
+data/database.sqlite
+/src/graph/__pycache__
+/src/db/__pycache__
+/src/parser/__pycache__
+/src/prompt/__pycache__
